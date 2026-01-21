@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Manager</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Card style */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 
+                0 15px 30px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+
+        /* Form */
+        #pForm {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        input {
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+        }
+
+        /* Buttons */
+        button {
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        #addpbtn {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #fff;
+        }
+
+        #updatepbtn {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #333;
+        }
+
+        #getBtn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            margin-top: 15px;
+        }
+
+        #dlteTable {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background: #f4f6ff;
+        }
+
+        tr:hover {
+            background: #eef1ff;
+        }
+
+        img {
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Action buttons inside table */
+        td button {
+            padding: 8px 12px;
+            font-size: 12px;
+            border-radius: 10px;
+        }
+
+        td button:first-child {
+            background: #4facfe;
+            color: #fff;
+        }
+
+        td button:last-child {
+            background: #ff5858;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            th, td {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>🛍️ Product Management</h1>
+
+    <button id="dlteTable">Delete Entire Table</button>
+
+    <div class="card">
+        <form id="pForm">
+            <input type="text" id="name" placeholder="Product name">
+            <input type="text" id="desc" placeholder="Description">
+            <input type="text" id="price" placeholder="Price">
+            <input type="text" id="cat" placeholder="Category">
+            <input type="text" id="img" placeholder="Image URL">
+
+            <button id="addpbtn">Add Product</button>
+            <button id="updatepbtn">Update Product</button>
+        </form>
+    </div>
+
+    <button id="getBtn">Load Products</button>
+
+    <div class="card">
+        <table id="tTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody id="tBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="{% static 'productForm.js' %}"></script>
+</body>
+</html>
